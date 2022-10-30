@@ -15,23 +15,19 @@
  */
 class Solution {
      static void traverse(TreeNode node, List<List<Integer>> arr) {
-		/* if tree has only root node */
+
         if (node.left == null && node.right == null) {
             ArrayList<Integer> sub = new ArrayList<>();
             sub.add(node.val);
             arr.add(sub);
             return;
         }
-		/* 
-				Initialize the queue used to traverse bfs
-		*/
+		
         Queue<TreeNode> q = new ArrayDeque<>();
         q.add(node);
         int level = 0;
         while (!q.isEmpty()) {
-			/*
-				traverse each node at each level and store in sub list  
-			*/
+			
             int size = q.size();
             ArrayList<Integer> sub = new ArrayList<>();
             for (int i = 0; i < size; i++) {
@@ -41,10 +37,7 @@ class Solution {
                 sub.add(n.val);
                 q.poll();
             }
-			/* 
-				check if current level is odd or even :
-				if it is odd then reverse the sub list and add to our answer
-			*/
+			
             if (level % 2 != 0)     Collections.reverse(sub);
             arr.add(sub);
             level++;
